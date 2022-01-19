@@ -1,0 +1,13 @@
+{
+  "name": "trivia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd server && node index",
+    "install": "cd client && npm install && npm run build && cd .. && cd server && npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "meir shtiglitz",
+  "license": "ISC"
+}

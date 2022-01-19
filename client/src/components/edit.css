@@ -1,0 +1,36 @@
+form label{
+    display: block;
+}
+
+.arrow_left {
+    font-size: 50px;
+    position: absolute;
+    top: 40%;
+    left: -25%;
+    cursor: pointer;
+    padding: 10px;
+    color: #007bff;
+}
+
+.arrow_right {
+    font-size: 50px;
+    position: absolute;
+    top: 40%;
+    right: -25%;
+    cursor: pointer;
+    padding: 10px;
+    color: #007bff;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .arrow_left {
+        left: 0;
+        opacity: 0.6;
+    }
+
+    .arrow_right {
+        right: 0;
+        opacity: 0.6;
+    }
+}

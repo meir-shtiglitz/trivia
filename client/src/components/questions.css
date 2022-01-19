@@ -1,0 +1,102 @@
+.none{
+    display: none;
+}
+
+.afalse, .atrue {
+    border: solid 1px black;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+/* .show_colors .afalse {
+    background-color: rgb(223, 94, 94);
+    color: white;
+}
+*/
+
+
+.show_colors p{
+    pointer-events: none;
+}
+ .show_colors .atrue {
+    background-color: rgb(79, 231, 79);
+    color: white;
+}
+.show_colors button{
+    display: block;
+} 
+.red{
+    background-color: rgb(223, 94, 94);
+    color: white;
+}
+
+.container .score {
+    /* right: 3%; */
+}
+
+.the_table{
+    width: 100%;
+    position: absolute;
+    z-index: 2;
+    margin: 0 -15px 0 0;
+}
+
+.the_table table{
+    width: 50%;
+    background-color: aliceblue;
+    margin: auto;
+}
+
+.table_last{
+    left: 9%;
+    top: 45%;
+}
+
+#mng_btn{
+    margin-bottom: -35px !important;
+}
+
+/* writa animate */
+.wrap_msg{
+    direction:ltr;
+}
+
+.hold_msg{
+     width: 400px;
+}
+
+.msg{
+    direction: rtl;
+    white-space: nowrap;
+    overflow: hidden;    
+    font-size: 28px;
+    color: rgba(0,0,0);
+}
+
+.write {
+    animation: animated-text 3s steps(29,end) 1s 1 normal both,
+               animated-cursor 3s steps(29,end) infinite;
+  }
+  
+  /* text animation */
+  
+  @keyframes animated-text{
+    from{width: 0;}
+    to{width: 100%;}
+  }
+  
+  /* cursor animations */
+  
+  @keyframes animated-cursor{
+    from{border-right-color: rgba(0,0,0);}
+    to{border-right-color: transparent;}
+  }
+/* end writa animate */
+
+@media only screen and (max-width: 800px) {
+.col-3.text-center.score{
+    display: contents;
+}
+
+
+}

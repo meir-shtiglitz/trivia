@@ -1,0 +1,19 @@
+
+.contact_form label{
+    display: block !important;
+}
+
+h2{
+    font-family: inherit;
+}
+.contact_form .md-form i.fa {
+    position: absolute;
+    left: 2%;
+    top: 25%;
+    font-size: 20px;
+}
+
+.contact_form .md-form{
+    position: relative;
+}
+
