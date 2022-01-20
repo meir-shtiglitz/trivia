@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 //import reactdom from "react-dom";
 import { Link } from "react-router-dom";
-import { apiUrl } from "../config.json";
+import { ApiUrl } from "../api/apiUrl";
 
 
 
@@ -23,7 +23,7 @@ class Login extends Component {
             email: user.usernameoremail,
             password: user.password
         };
-        axios.post(`${apiUrl}/login`,data)
+        axios.post(`${ApiUrl}/login`,data)
         .then(function(res){
             console.log(res);
             var token = res.data.result;
@@ -47,6 +47,7 @@ class Login extends Component {
         return this.state.status;
     }
     render() { 
+        console.log("process.env.REACT_APP_API_URL",process.env.REACT_APP_API_URL)
         // alert(`${JSON.parse(apiUrl)}login`)
         return ( 
             <div className="container mb-5">

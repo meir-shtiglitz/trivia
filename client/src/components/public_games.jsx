@@ -2,14 +2,14 @@ import { Component } from "react";
 import axios from "axios";
 import "../css/admin.css";
 import { Link } from "react-router-dom";
-import { apiUrl } from "../config.json";
+import { ApiUrl } from "../api/apiUrl";
 
 
 class Public_games extends Component {
     constructor(){
         super();
         var self = this;
-        axios.get(`${apiUrl}/games/public`)
+        axios.get(`${ApiUrl}/games/public`)
         .then(res => {
             console.log('res');
             console.log(res);

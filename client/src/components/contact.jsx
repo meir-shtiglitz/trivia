@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { MDBContainer, MDBBtn, MDBIcon, MDBInput } from 'mdbreact';
-import Swal from "sweetalert2";
-import axios from "axios";
 import "./contact.css"
-import { apiUrl } from "../config.json";
 import { sendMailContact } from "../api/contact";
 
 class Contact extends Component {

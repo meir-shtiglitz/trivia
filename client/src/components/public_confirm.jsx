@@ -2,14 +2,14 @@ import { Component } from "react";
 import axios from "axios";
 import "../css/admin.css";
 import { Link } from "react-router-dom";
-import { apiUrl } from "../config.json";
+import { ApiUrl } from "../api/apiUrl";
 
 
 class Public_confirm extends Component {
     constructor(){
         super();
         var self = this;
-        axios.get(`${apiUrl}/games/waiting`)
+        axios.get(`${ApiUrl}/games/waiting`)
         .then(res => {
             console.log('res');
             console.log(res);
@@ -28,7 +28,7 @@ class Public_confirm extends Component {
         var to_update = e.target.name;
         var games = this.state.games;
         var status = e.target.id;
-        axios.get(`${apiUrl}/status/admin`,{
+        axios.get(`${ApiUrl}/status/admin`,{
             params:{
                 gameId: games[to_update]._id,
                 status: status

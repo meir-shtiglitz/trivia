@@ -1,6 +1,6 @@
 import { Component } from "react";
 import axios from "axios";
-import { apiUrl } from "../config.json";
+import { ApiUrl } from "../api/apiUrl";
 
 class Logame extends Component {
     state = { 
@@ -22,7 +22,7 @@ class Logame extends Component {
             nameGame: d_game.nameGame,
             password: d_game.password
         }};
-        axios.get(`${apiUrl}/games/logame`, data, {
+        axios.get(`${ApiUrl}/games/logame`, data, {
             headers: {
             'Content-Type': 'application/json'
           },

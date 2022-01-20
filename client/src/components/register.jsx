@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import Swal from 'sweetalert2'
 import { Link } from "react-router-dom";
-import { apiUrl } from "../config.json";
+import { ApiUrl } from "../api/apiUrl";
 
 class Register extends Component {
     state = { 
@@ -21,7 +21,7 @@ class Register extends Component {
         var self = this;
         var user = this.state;
         console.log(user);
-        axios.get(`${apiUrl}/register`, {
+        axios.get(`${ApiUrl}/register`, {
             params:{
                 name: user.name,
                 email: user.email,

@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import Questions from "./questions";
 import Score from "./score";
 import Socket from "./Socket";
-import { apiUrl } from "../config.json";
+import { ApiUrl } from "../api/apiUrl";
 
 
 class manegQuestions extends Component {
@@ -22,7 +22,7 @@ class manegQuestions extends Component {
         if(window.confirm('בטוח שברצונך לאפס את המשחק? כל השחקנים והתוצאות יימחקו')){
             const { gameId } = this.props.match.params;
             localStorage.setItem(gameId, 'מנהל המשחק');
-            axios.get(`${apiUrl}/game/update`,{
+            axios.get(`${ApiUrl}/game/update`,{
                 params:{
                     gameId: gameId,
                     players: [{name: 'מנהל המשחק'}],

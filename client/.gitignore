@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/.evv
+/src/config.json
 /.pnp
 .pnp.js
 

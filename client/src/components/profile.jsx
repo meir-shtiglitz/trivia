@@ -3,7 +3,7 @@ import axios from "axios";
 import Swal from 'sweetalert2'
 import { Link } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import { apiUrl } from "../config.json";
+import { ApiUrl } from "../api/apiUrl";
 
 
 
@@ -31,7 +31,7 @@ class Profile extends Component {
         // var self = this;
         var { user } = this.state;
         console.log(user);
-        axios.get(`${apiUrl}/user/update`, {
+        axios.get(`${ApiUrl}/user/update`, {
             params:user
         })
         .then(function(res){

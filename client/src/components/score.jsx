@@ -1,7 +1,7 @@
 import { Component } from "react";
 //import { Questions } from "./questions";
 import axios from "axios";
-import { apiUrl } from "../config.json";
+import { ApiUrl } from "../api/apiUrl";
 
 class Score extends Component {
    
@@ -25,7 +25,7 @@ class Score extends Component {
 
     getScore = () => {
         const {gameId} = this.props;
-        axios.get(`${apiUrl}/questions/get`,{
+        axios.get(`${ApiUrl}/questions/get`,{
             params:{
                 gameId: gameId
             }

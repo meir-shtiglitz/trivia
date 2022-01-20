@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { apiUrl } from "../config.json";
+import { ApiUrl } from "../api/apiUrl";
 import socketIOClient from "socket.io-client";
 
 class Socket extends Component {
@@ -19,7 +19,7 @@ class Socket extends Component {
 
      componentDidMount = async()=>{
         await this.setState({room: this.props.room, name: this.props.name})
-        this.socket = await socketIOClient(apiUrl,{query:{name: this.state.name}});
+        this.socket = await socketIOClient(ApiUrl,{query:{name: this.state.name}});
          if (this.socket) this.socket.emit('join', this.state.room, this.state.name);
         this.render();
      }
