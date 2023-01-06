@@ -67,8 +67,8 @@ app.use(cors());
 app.get('*', (req, res, next) => {
     console.log('path',req.path);
     if (!req.path.includes('api')){
-    console.log('general',path.join(__dirname, '../client','build', 'index.html'))
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+    console.log('general',path.join(__dirname,'build', 'index.html'))
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
     } else{
         console.log('next')
         next();

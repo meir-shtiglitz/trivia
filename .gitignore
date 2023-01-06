@@ -2,4 +2,6 @@
 /client/node_modules
 /server/.env
 /client/.env
+/client/build
+/server/build
 /client/src/config.json
