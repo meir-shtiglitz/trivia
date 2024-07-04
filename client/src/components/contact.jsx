@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { MDBContainer, MDBBtn, MDBIcon, MDBInput } from 'mdbreact';
 import "./contact.css"
 import { sendMailContact } from "../api/contact";
-
+const initState = { name: '', email: '', subject: '', msg: '', status: '' }
 class Contact extends Component {
-    state = { name: '', email: '', subject: '', msg: '', status: '' }
+
+    state = initState
 
     inputer = (e) => {
         this.setState({ [e.target.name]: e.target.value });
@@ -16,6 +17,7 @@ class Contact extends Component {
 
     send = () => {
         sendMailContact(this.state, this.updateState);
+        this.setState(initState)
     }
 
     render() {
@@ -42,10 +44,10 @@ class Contact extends Component {
                                 </label>
                             </div>
                             <div className="text-center">
-                                <MDBBtn onClick={this.send} color="secondary" className="col-sm-5">
+                                <div onClick={this.send} className="col-sm-5 btn btn-secondary">
                                     <span>  שלח  </span>
                                     <MDBIcon far icon="paper-plane" className="ml-1" />
-                                </MDBBtn>
+                                </div>
                             </div>
                         </form>
                     </div>
