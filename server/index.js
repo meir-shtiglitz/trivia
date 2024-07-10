@@ -59,7 +59,8 @@ io.on('connection', (socket) => {
 
 })
 const bodyParser = require('body-parser');
-app.use(express.static(path.join(__dirname, '../client','build')));
+const sendMail = require('./src/services/sendMail');
+app.use(express.static(path.join(__dirname, 'build')));
 
 app.use(bodyParser.json())
 app.use(cors());
@@ -67,8 +68,8 @@ app.use(cors());
 app.get('*', (req, res, next) => {
     console.log('path',req.path);
     if (!req.path.includes('api')){
-    console.log('general',path.join(__dirname,'build', 'index.html'))
-    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+    console.log('general',path.join(__dirname, 'build', 'index.html'))
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
     } else{
         console.log('next')
         next();
@@ -77,33 +78,13 @@ app.get('*', (req, res, next) => {
 
 
 
-const nodemailer = require('nodemailer');
-// process.env.NODE_TLS_REJECT_UNAUTHORIZED = "http://localhost:3000/contact";
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    host: 'smtp.gmail.com',
-    auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS
-    },
-    tls: {
-        rejectUnauthorized: false
-    }
-});
 
 app.get('/api/contact', (req, res) => {
     var contact = req.query;
     console.log(contact);
-    var text = '<P>מאת: ' + contact.name + '</p><p>email: ' + contact.email + '</p><p>תוכן ההודעה: ' + contact.msg + '</p>';
-
-    var info = transporter.sendMail({
-        from: `טריוויה-לי<${process.env.MAIL_USER}>`,
-        to: process.env.MAIL_ADMIN,
-        subject: contact.subject,
-        html: text
-    }).then(result => {
-        return res.send({ result: result });
-    })
+    const html = '<P>מאת: ' + contact.name + '</p><p>email: ' + contact.email + '</p><p>תוכן ההודעה: ' + contact.msg + '</p>';
+    sendMail(contact.subject, null, html)
+    return res.json('mail sent successfully')
 })
 
 const user_schema = mongoose.Schema({
