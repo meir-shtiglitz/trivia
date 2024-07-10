@@ -6,12 +6,14 @@ import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.css";
 import "sweetalert2/dist/sweetalert2.min.js";
 import { BrowserRouter } from "react-router-dom";
+import { createRoot } from 'react-dom/client';
 
-ReactDOM.render(
+const container = document.getElementById('root');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(
   <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-  document.getElementById('root')
+    <App tab="home" />
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
