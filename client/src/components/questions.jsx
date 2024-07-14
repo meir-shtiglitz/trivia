@@ -39,32 +39,39 @@ componentDidMount(){
     const playerAndThenQuestion = async() => {
             const game = await getGame(this.state.gameId, this.updateState);
             await this.get_player(game.players);
-            !this.state.live && this.get_qustion();
+            console.log('got player')
+            this.setState({}, () => {
+                !this.state.live && this.get_qustion();
+            });
     }
     playerAndThenQuestion();
 }
 
 // בדיקה אם השחקן שיחק כבר והאם סיים ובמידה ולא אז נכניס אותו למערכת באמצעות קריאה לאינסרט פלייר
 get_player = async(players) => {
+    this.setRunCounter(false);
     await this.player_d();
-    this.stop();
     var { pName } = this.state;
-    getPlayerDetails(players,pName,this.stop,this.updateState);
+    console.log('pName', pName)
+    await getPlayerDetails(players,pName, () => this.setRunCounter(true),this.updateState);
+    console.log('after get name')
+    // getPlayerDetails(players,pName, null, this.updateState);
  }
 
 // עדכון חלק מהסטייט בלי לפגוע בשאר הנתונים
  updateState = (data) =>{
+    console.log('updateState () - data:', data)
     this.setState({...data})
  }
 
 //'קבלת שם מהשחקן שלא קיים בלוקאל סטורג
    player_d = async() => {
-        getPlayerName(this.state.gameId, this.updateState, !this.state.live && this.stop);
+       await getPlayerName(this.state.gameId, this.updateState, !this.state.live && (() => this.setRunCounter()));
    }
 
 //לאחר עניית תשובה
 handleAnswer = async (e = false) => {
-    await this.stop();
+    await this.setRunCounter(false);
     let answer = true;
     if(!e || e === 'less' || e.target.className === 'afalse') answer = false;
     updateAnswer(this.state, answer, this.updateState, e);
@@ -76,18 +83,20 @@ next = (qNum) => {
 }
 // get the current question
 get_qustion = async() => {
+    console.log('before')
     if (!this.state.questions) return;
-    this.setState({start: true})
-    this.stop();
+    console.log('this.state.questions', this.state.questions)
+    this.setState({start: true, stop: false});
 }
 
 // מטודות קאונטר
-stop = () => {
-    this.updateState({stop: !this.state.stop})
+
+setRunCounter = (counterStatus) => {
+    this.updateState({stop: !counterStatus})
 }
 
 onstop = (time) => {
-    this.setState({time:time,stop:true});
+    this.setState({time:time, stop: true});
     time === 0 &&  this.handleAnswer();
 }
 // סוף מטודות קאונטר

@@ -5,7 +5,7 @@ class Counter extends Component {
         super(props);
         this.state = {
             count: this.props.num,
-            stop: true
+            stop: this.props.stop
         }
         this.countRender = 0;
     }
@@ -37,8 +37,9 @@ class Counter extends Component {
     // }
 
     render() {
-        this.countRender++;
-        if (this.state.stop !== this.props.stop && this.countRender > 5) {
+        console.log('this.props.stop', this.props.stop)
+        console.log('this.state.stop', this.state.stop)
+        if (this.state.stop !== this.props.stop) {
             this.props.stop ? this.stop() : this.start();
         }
         this.state.count < 1 && this.finish();
