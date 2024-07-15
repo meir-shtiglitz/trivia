@@ -18,6 +18,8 @@ class Public_games extends Component {
         })
         
     }
+
+    fakePlayersNum = 250
    
     state = {
         id: '',
@@ -53,7 +55,7 @@ class Public_games extends Component {
                         </div>
                         <div className="card-body">
                             <p>מספר השאלות :{num_q}</p>
-                            <p>מספר השחקנים ששיחקו: {num_p}</p>
+                            <p>מספר השחקנים ששיחקו: {num_p + this.fakePlayersNum}</p>
                             <p>יוצר המשחק: {game.password}</p>
                         </div>
                         <div className="card-footer w-100 m-auto row">

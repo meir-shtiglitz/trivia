@@ -50,7 +50,7 @@ componentDidMount(){
 // בדיקה אם השחקן שיחק כבר והאם סיים ובמידה ולא אז נכניס אותו למערכת באמצעות קריאה לאינסרט פלייר
 get_player = async(players) => {
     this.setRunCounter(false);
-    await this.player_d();
+    if(!this.state.pName) await this.player_d(players);
     var { pName } = this.state;
     console.log('pName', pName)
     await getPlayerDetails(players,pName, () => this.setRunCounter(true),this.updateState);
@@ -65,8 +65,8 @@ get_player = async(players) => {
  }
 
 //'קבלת שם מהשחקן שלא קיים בלוקאל סטורג
-   player_d = async() => {
-       await getPlayerName(this.state.gameId, this.updateState, !this.state.live && (() => this.setRunCounter()));
+   player_d = async(players) => {
+       await getPlayerName(this.state.gameId, this.updateState, !this.state.live && (() => this.setRunCounter()), players);
    }
 
 //לאחר עניית תשובה
